@@ -99,6 +99,12 @@ $search_query = isset($_GET['search']) ? htmlspecialchars($_GET['search'], ENT_Q
   <!-- Include Premium B2B Header -->
   <?php include_once 'includes/header.php'; ?>
 
+  <!-- Include Category Navigation Strip -->
+  <?php include_once 'includes/category-bar.php'; ?>
+
+  <!-- Include Brand Hero Slider -->
+  <?php include_once 'includes/hero-slider.php'; ?>
+
   <!-- Content Simulation Area (Dynamic Search Feedback) -->
   <?php if (!empty($search_query)): ?>
     <div style="max-width: 1440px; margin: 32px auto; padding: 0 24px;">
