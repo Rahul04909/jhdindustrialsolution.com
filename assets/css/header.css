@@ -976,6 +976,13 @@ button {
   display: block;
 }
 
+.slide--bosch { background-color: #0b1c30; }
+.slide--honeywell { background-color: #1c1917; }
+.slide--havells { background-color: #251212; }
+.slide--kirloskar { background-color: #0c2018; }
+.slide--3m { background-color: #241018; }
+
+
 
 /* Slider Controls */
 .slider-arrow {
