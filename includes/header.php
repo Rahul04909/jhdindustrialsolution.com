@@ -30,23 +30,7 @@
     <!-- Company Logo -->
     <div class="header-logo">
       <a href="index.php" class="logo-link" aria-label="JHD Industrial Solution Home">
-        <!-- Modern Custom Logo SVG -->
-        <svg class="logo-svg" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="36" height="36" rx="8" fill="url(#logo-gradient)" />
-          <path d="M9 10H13V20C13 21.65 11.65 23 10 23C8.35 23 7 21.65 7 20H9C9 20.55 9.45 21 10 21C10.55 21 11 20.55 11 20V12H9V10Z" fill="white"/>
-          <path d="M15 10H17.5V15H21.5V10H24V23H21.5V17.5H17.5V23H15V10Z" fill="white"/>
-          <path d="M26.5 10H29.5C31.5 10 33 11.5 33 13.5V19.5C33 21.5 31.5 23 29.5 23H26.5V10ZM29 12.2H29.5C30.3 12.2 30.8 12.7 30.8 13.5V19.5C30.8 20.3 30.3 20.8 29.5 20.8H29V12.2Z" fill="white"/>
-          <defs>
-            <linearGradient id="logo-gradient" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#0b2545" />
-              <stop offset="1" stop-color="#e63946" />
-            </linearGradient>
-          </defs>
-        </svg>
-        <div class="logo-info">
-          <div class="logo-text">JHD<span>.</span></div>
-          <div class="logo-tagline">Industrial Solution</div>
-        </div>
+        <img class="logo-img" src="assets/images/logo/logo.png" alt="JHD Industrial Solution Logo">
       </a>
     </div>
 
@@ -227,19 +211,7 @@
   <div class="mobile-drawer__header">
     <div class="header-logo">
       <a href="index.php" class="logo-link">
-        <svg width="28" height="28" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="36" height="36" rx="8" fill="url(#logo-gradient-drawer)" />
-          <path d="M9 10H13V20C13 21.65 11.65 23 10 23C8.35 23 7 21.65 7 20H9C9 20.55 9.45 21 10 21C10.55 21 11 20.55 11 20V12H9V10Z" fill="white"/>
-          <path d="M15 10H17.5V15H21.5V10H24V23H21.5V17.5H17.5V23H15V10Z" fill="white"/>
-          <path d="M26.5 10H29.5C31.5 10 33 11.5 33 13.5V19.5C33 21.5 31.5 23 29.5 23H26.5V10ZM29 12.2H29.5C30.3 12.2 30.8 12.7 30.8 13.5V19.5C30.8 20.3 30.3 20.8 29.5 20.8H29V12.2Z" fill="white"/>
-          <defs>
-            <linearGradient id="logo-gradient-drawer" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#0b2545" />
-              <stop offset="1" stop-color="#e63946" />
-            </linearGradient>
-          </defs>
-        </svg>
-        <div class="logo-text">JHD<span>.</span></div>
+        <img class="logo-img logo-img--drawer" src="assets/images/logo/logo.png" alt="JHD Industrial Solution Logo">
       </a>
     </div>
     <button class="mobile-drawer__close" id="js-drawer-close" aria-label="Close menu">
@@ -293,6 +265,18 @@
 <!-- Interactive Frontend Logic -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+  
+  // --- DYNAMIC FAVICON INJECTION ---
+  (function() {
+    let faviconLink = document.querySelector("link[rel~='icon']");
+    if (!faviconLink) {
+      faviconLink = document.createElement('link');
+      faviconLink.rel = 'icon';
+      faviconLink.type = 'image/png';
+      document.head.appendChild(faviconLink);
+    }
+    faviconLink.href = 'favicon.png';
+  })();
   
   // --- PINCODE SELECTOR LOCALSTORAGE LOGIC ---
   const pincodeDisplayHeader = document.getElementById("header-pincode");
