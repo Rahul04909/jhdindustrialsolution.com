@@ -105,6 +105,10 @@ $search_query = isset($_GET['search']) ? htmlspecialchars($_GET['search'], ENT_Q
   <!-- Include Brand Hero Slider -->
   <?php include_once 'includes/hero-slider.php'; ?>
 
+  <!-- Include Category Products Shelf -->
+  <?php include_once 'includes/category-products.php'; ?>
+
+
   <!-- Content Simulation Area (Dynamic Search Feedback) -->
   <?php if (!empty($search_query)): ?>
     <div style="max-width: 1440px; margin: 32px auto; padding: 0 24px;">
@@ -119,5 +123,9 @@ $search_query = isset($_GET['search']) ? htmlspecialchars($_GET['search'], ENT_Q
     </div>
   <?php endif; ?>
 
+  <!-- Include Premium B2B Footer -->
+  <?php include_once 'includes/footer.php'; ?>
+
 </body>
 </html>
+
