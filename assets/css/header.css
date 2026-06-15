@@ -886,24 +886,35 @@ button {
 }
 
 .category-image-wrap {
-  width: 44px;
-  height: 44px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
-  background-color: var(--bg-light);
+  background-color: #ffffff;
   border: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primary-color);
+  overflow: hidden;
   transition: all var(--transition-fast);
+  padding: 3px;
+}
+
+.category-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  transition: transform var(--transition-fast);
+}
+
+.category-item:hover .category-image {
+  transform: scale(1.1);
 }
 
 .category-item:hover .category-image-wrap {
   transform: translateY(-2px);
-  background-color: #eff6ff;
   border-color: #3b82f6;
-  color: #3b82f6;
-  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.15);
 }
 
 .category-label {
@@ -919,6 +930,14 @@ button {
 .category-item:hover .category-label {
   color: var(--accent-color);
 }
+
+@media (min-width: 1025px) {
+  .category-container {
+    justify-content: space-between;
+    overflow-x: visible;
+  }
+}
+
 
 
 /* --- Brand Hero Slider Styles --- */
