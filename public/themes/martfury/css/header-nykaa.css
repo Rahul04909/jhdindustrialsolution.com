@@ -1,0 +1,464 @@
+/* ========== NYKAA-STYLE HEADER ========== */
+
+/* --- Top Announcement Bar --- */
+.header-top-strip {
+  background: #fc2779;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 38px;
+  height: 38px;
+  overflow: hidden;
+}
+.header-top-strip .strip-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 83.25em;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.header-top-strip .strip-left {
+  flex: 1;
+  text-align: left;
+}
+.header-top-strip .strip-left span {
+  animation: blink-text 2s infinite;
+}
+.header-top-strip .strip-right {
+  text-align: right;
+}
+.header-top-strip .strip-right a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 18px;
+  font-size: 13px;
+  font-weight: 400;
+  opacity: 0.9;
+  display: inline-block;
+}
+.header-top-strip .strip-right a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+@keyframes blink-text {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* --- Main Header --- */
+.header-nykaa {
+  background: #fff;
+  border-bottom: 1px solid #e6dede;
+  position: relative;
+  z-index: 9;
+}
+.header-nykaa.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  animation: slideDown 0.3s ease;
+}
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+.header-nykaa-inner {
+  display: flex;
+  align-items: center;
+  max-width: 83.25em;
+  margin: 0 auto;
+  padding: 8px 15px;
+  height: 64px;
+}
+
+/* Logo */
+.header-nykaa .nykaa-logo {
+  flex-shrink: 0;
+  margin-right: 24px;
+  display: flex;
+  align-items: center;
+}
+.header-nykaa .nykaa-logo a {
+  display: block;
+  text-decoration: none;
+}
+.header-nykaa .nykaa-logo img {
+  max-height: 42px;
+  width: auto;
+}
+
+/* Navigation */
+.header-nykaa .nykaa-nav {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-right: 20px;
+  gap: 0;
+}
+.header-nykaa .nykaa-nav .nykaa-nav-item,
+.header-nykaa .nykaa-nav ul.nykaa-nav-inline {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+.header-nykaa .nykaa-nav .nykaa-nav-item > a,
+.header-nykaa .nykaa-nav ul.nykaa-nav-inline > li > a {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #03021a;
+  text-decoration: none;
+  line-height: 48px;
+  padding: 0 10px;
+  letter-spacing: 0.3px;
+}
+.header-nykaa .nykaa-nav .nykaa-nav-item > a:hover,
+.header-nykaa .nykaa-nav ul.nykaa-nav-inline > li > a:hover {
+  color: #fc2779;
+}
+
+/* Category mega menu on hover */
+.header-nykaa .nykaa-nav .nav-categories {
+  position: relative;
+}
+.header-nykaa .nykaa-nav .nav-categories:hover .nykaa-mega-menu {
+  display: block;
+}
+.header-nykaa .nykaa-mega-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  z-index: 20;
+  min-width: 220px;
+  padding: 12px 0;
+  border-radius: 0 0 4px 4px;
+}
+.header-nykaa .nykaa-mega-menu a {
+  display: block;
+  padding: 8px 20px;
+  color: #333;
+  text-decoration: none;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.header-nykaa .nykaa-mega-menu a:hover {
+  background: #f8f8f8;
+  color: #fc2779;
+}
+
+/* Main menu children dropdown */
+.header-nykaa .nykaa-nav ul.nykaa-nav-inline .menu-item-has-children {
+  position: relative;
+}
+.header-nykaa .nykaa-nav ul.nykaa-nav-inline .menu-item-has-children:hover > .sub-menu {
+  display: block;
+}
+.header-nykaa .nykaa-nav ul.nykaa-nav-inline .sub-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  z-index: 20;
+  min-width: 200px;
+  padding: 8px 0;
+  border-radius: 0 0 4px 4px;
+  list-style: none;
+}
+.header-nykaa .nykaa-nav ul.nykaa-nav-inline .sub-menu a {
+  display: block;
+  padding: 8px 20px;
+  color: #333;
+  text-decoration: none;
+  font-size: 13px;
+  text-transform: none;
+  font-weight: 400;
+}
+.header-nykaa .nykaa-nav ul.nykaa-nav-inline .sub-menu a:hover {
+  background: #f8f8f8;
+  color: #fc2779;
+}
+.header-nykaa .nykaa-nav ul.nykaa-nav-inline .sub-toggle {
+  display: none;
+}
+
+/* Search */
+.header-nykaa .nykaa-search {
+  flex: 1;
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.header-nykaa .nykaa-search .search-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  background: #f4f4f4;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 0 4px 0 14px;
+  transition: border-color 0.2s;
+}
+.header-nykaa .nykaa-search .search-wrapper:focus-within,
+.header-nykaa .nykaa-search .search-wrapper.active {
+  border-color: #fc2779;
+  background: #fff;
+}
+.header-nykaa .nykaa-search input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: #000;
+  outline: none;
+  height: 100%;
+}
+.header-nykaa .nykaa-search input::placeholder {
+  color: #000;
+  opacity: 0.5;
+}
+.header-nykaa .nykaa-search .search-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0 10px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.header-nykaa .nykaa-search .search-btn svg {
+  opacity: 0.5;
+}
+.header-nykaa .nykaa-search .search-btn:hover svg {
+  opacity: 0.8;
+}
+.header-nykaa .spinner-icon {
+  display: none;
+  position: absolute;
+  right: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.header-nykaa .spinner-icon i {
+  color: #999;
+  font-size: 14px;
+}
+.header-nykaa .ps-panel--search-result {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  border-radius: 0 0 4px 4px;
+  z-index: 30;
+  max-height: 480px;
+  overflow-y: auto;
+  display: none;
+}
+
+/* Right actions */
+.header-nykaa .nykaa-actions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 16px;
+  gap: 6px;
+}
+.header-nykaa .nykaa-actions .action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  padding: 4px 8px;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+.header-nykaa .nykaa-actions .action-btn svg {
+  display: block;
+}
+.header-nykaa .nykaa-actions .action-btn .action-label {
+  font-size: 10px;
+  line-height: 1;
+  margin-top: 2px;
+  white-space: nowrap;
+  color: #000;
+  font-weight: 500;
+}
+.header-nykaa .nykaa-actions .action-btn .badge-count {
+  position: absolute;
+  top: 0;
+  right: 2px;
+  background: #fc2779;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  min-width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  border-radius: 50%;
+  padding: 0 4px;
+}
+
+/* Account dropdown */
+.header-nykaa .account-dropdown {
+  position: relative;
+}
+.header-nykaa .account-dropdown:hover .account-menu {
+  display: block;
+}
+.header-nykaa .account-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  border-radius: 4px;
+  z-index: 30;
+  min-width: 180px;
+  padding: 8px 0;
+}
+.header-nykaa .account-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+  font-size: 13px;
+}
+.header-nykaa .account-menu a:hover {
+  background: #f8f8f8;
+  color: #fc2779;
+}
+
+/* Category select inside search */
+.header-nykaa .search-category-select {
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #ddd;
+  margin-right: 10px;
+  padding-right: 10px;
+}
+.header-nykaa .search-category-select select {
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  color: #666;
+  outline: none;
+  cursor: pointer;
+  max-width: 90px;
+}
+
+/* Cart mini dropdown */
+.header-nykaa .ps-cart--mini {
+  position: relative;
+}
+.header-nykaa .ps-cart--mini .ps-cart--mobile {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 360px;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  border-radius: 4px;
+  z-index: 30;
+  padding: 16px;
+}
+.header-nykaa .ps-cart--mini:hover .ps-cart--mobile {
+  display: block;
+}
+.header-nykaa .ps-cart--mobile .ps-cart__content {
+  max-height: 300px;
+  overflow-y: auto;
+}
+.header-nykaa .ps-cart--mobile .ps-cart__footer {
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+  margin-top: 8px;
+}
+.header-nykaa .ps-cart--mobile .ps-cart__total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.header-nykaa .ps-cart--mobile .ps-cart__total strong {
+  color: #fc2779;
+}
+.header-nykaa .ps-cart--mobile .ps-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 13px;
+  text-decoration: none;
+}
+.header-nykaa .ps-cart--mobile .ps-btn--primary {
+  background: #fc2779;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.header-nykaa .ps-cart--mobile .ps-btn--primary:hover {
+  background: #e0226c;
+}
+.header-nykaa .ps-cart--mobile .ps-btn--outline {
+  border: 1px solid #fc2779;
+  color: #fc2779;
+}
+.header-nykaa .ps-cart--mobile .ps-btn--outline:hover {
+  background: #fc2779;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .header-nykaa .nykaa-nav { display: none; }
+  .header-nykaa .nykaa-search { max-width: 320px; }
+}
+@media (max-width: 768px) {
+  .header-top-strip .strip-right { display: none; }
+  .header-nykaa-inner { height: 56px; padding: 4px 12px; }
+  .header-nykaa .nykaa-logo { margin-right: 12px; }
+  .header-nykaa .nykaa-logo img { max-height: 32px; }
+  .header-nykaa .nykaa-search { max-width: 100%; margin: 0 8px; }
+  .header-nykaa .nykaa-search .search-wrapper { height: 36px; }
+  .header-nykaa .nykaa-actions .action-btn { padding: 4px; }
+  .header-nykaa .nykaa-actions .action-btn .action-label { display: none; }
+}
+
+/* --- Mobile Header Overrides --- */
+.header.header--mobile {
+  display: none;
+}
+@media (max-width: 768px) {
+  .header.header--mobile {
+    display: block;
+  }
+  .header-nykaa {
+    display: none;
+  }
+  .header-top-strip {
+    display: none;
+  }
+}

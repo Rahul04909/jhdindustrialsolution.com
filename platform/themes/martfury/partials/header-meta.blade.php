@@ -7,28 +7,28 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    {!! BaseHelper::googleFonts('https://fonts.googleapis.com/css2?family=' . urlencode(theme_option('primary_font', 'Work Sans')) . ':wght@300;400;500;600;700&display=swap') !!}
+    {!! BaseHelper::googleFonts('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;500;600;700&display=swap') !!}
 
     <style>
         :root {
-            --color-1st: {{ theme_option('primary_color', '#fcb800') }};
-            --primary-color: {{ theme_option('primary_color', '#fcb800') }};
-            --color-2nd: {{ theme_option('secondary_color', '#222222') }};
-            --secondary-color: {{ theme_option('secondary_color', '#222222') }};
-            --primary-font: '{{ theme_option('primary_font', 'Work Sans') }}', sans-serif;
-            --button-text-color: {{ theme_option('button_text_color', '#000') }};
-            --header-text-color: {{ theme_option('header_text_color', '#000') }};
-            --header-button-background-color: {{ theme_option('header_button_background_color', '#000') }};
+            --color-1st: {{ theme_option('primary_color', '#fc2779') }};
+            --primary-color: {{ theme_option('primary_color', '#fc2779') }};
+            --color-2nd: {{ theme_option('secondary_color', '#03021a') }};
+            --secondary-color: {{ theme_option('secondary_color', '#03021a') }};
+            --primary-font: '{{ theme_option('primary_font', 'Inter') }}', sans-serif;
+            --button-text-color: {{ theme_option('button_text_color', '#fff') }};
+            --header-text-color: {{ theme_option('header_text_color', '#03021a') }};
+            --header-button-background-color: {{ theme_option('header_button_background_color', '#fc2779') }};
             --header-button-text-color: {{ theme_option('header_button_text_color', '#fff') }};
-            --header-text-hover-color: {{ theme_option('header_text_hover_color', '#fff') }};
-            --header-text-accent-color: {{ theme_option('header_text_accent_color', '#222222') }};
-            --header-diliver-border-color: {{ BaseHelper::hexToRgba(theme_option('header_text_color', '#000'), 0.15) }};
-            --footer-background-color: {{ theme_option('footer_background_color', '#ffffff') }};
+            --header-text-hover-color: {{ theme_option('header_text_hover_color', '#fc2779') }};
+            --header-text-accent-color: {{ theme_option('header_text_accent_color', '#fc2779') }};
+            --header-diliver-border-color: {{ BaseHelper::hexToRgba(theme_option('header_text_color', '#03021a'), 0.15) }};
+            --footer-background-color: {{ theme_option('footer_background_color', '#fafafa') }};
             --footer-text-color: {{ theme_option('footer_text_color', '#666') }};
-            --footer-text-link-color: {{ theme_option('footer_text_link_color', '#666') }};
-            --footer-text-link-hover-color: {{ theme_option('footer_text_link_hover_color', '#fcb800') }};
+            --footer-text-link-color: {{ theme_option('footer_text_link_color', '#333') }};
+            --footer-text-link-hover-color: {{ theme_option('footer_text_link_hover_color', '#fc2779') }};
             --footer-border-color: {{ theme_option('footer_border_color', '#e1e1e1') }};
-            --footer-heading-color: {{ theme_option('footer_heading_color', '#000') }};
+            --footer-heading-color: {{ theme_option('footer_heading_color', '#03021a') }};
         }
     </style>
 
