@@ -1,0 +1,27 @@
+#quote-requests-table_wrapper .dataTable th,
+#quote-requests-table_wrapper .dataTable td {
+    font-size: 0.8125rem;
+    white-space: nowrap;
+    padding: 0.5rem 0.65rem;
+}
+
+#quote-requests-table_wrapper .dataTable td {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#quote-requests-table_wrapper .dataTables_scrollBody {
+    overflow-x: hidden !important;
+}
+
+#quote-requests-table_wrapper .table-responsive {
+    overflow-x: hidden !important;
+}
+
+#quote-requests-table_wrapper .dataTable .badge {
+    font-size: 0.75rem;
+    padding: 0.25em 0.5em;
+    font-weight: 500;
+    white-space: nowrap;
+}
