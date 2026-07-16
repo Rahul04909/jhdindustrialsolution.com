@@ -116,5 +116,6 @@
 
     {!! Theme::footer() !!}
 
+    @stack('footer')
     </body>
 </html>
