@@ -737,3 +737,314 @@
     display: none;
   }
 }
+
+/* ========== NYKAA-STYLE FOOTER ========== */
+.ps-footer--nykaa {
+  background: #0f0f1a;
+  color: #b0b0b0;
+  font-size: 13px;
+  line-height: 1.7;
+  padding-top: 0;
+}
+.ps-footer--nykaa a {
+  color: #b0b0b0;
+  transition: color 0.2s ease;
+}
+.ps-footer--nykaa a:hover {
+  color: #fc2779;
+}
+.ps-footer--nykaa .widget-title {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 18px;
+}
+
+/* Newsletter Bar */
+.ps-footer--nykaa .ps-footer__newsletter-bar {
+  background: linear-gradient(135deg, #fc2779 0%, #ff6b9d 100%);
+  padding: 36px 0;
+}
+.ps-footer--nykaa .ps-footer__newsletter-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+.ps-footer--nykaa .ps-footer__newsletter-form {
+  flex: 1;
+  max-width: 600px;
+}
+.ps-footer--nykaa .ps-footer__newsletter-title {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.ps-footer--nykaa .ps-footer__newsletter-desc {
+  color: rgba(255,255,255,0.85);
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+.ps-footer--nykaa .ps-form__input-group {
+  display: flex;
+  gap: 0;
+  max-width: 460px;
+}
+.ps-footer--nykaa .ps-form__input-group .form-control {
+  flex: 1;
+  height: 44px;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  padding: 0 16px;
+  font-size: 13px;
+  color: #333;
+  background: #fff;
+  outline: none;
+  box-shadow: none;
+}
+.ps-footer--nykaa .ps-form__input-group .form-control::placeholder {
+  color: #999;
+}
+.ps-footer--nykaa .ps-btn--subscribe {
+  height: 44px;
+  padding: 0 28px;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  background: #1a1a2e;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+.ps-footer--nykaa .ps-btn--subscribe:hover {
+  background: #2a2a4e;
+}
+.ps-footer--nykaa .ps-footer__social-wrap {
+  flex-shrink: 0;
+}
+.ps-footer--nykaa .ps-footer__social-wrap h4 {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.ps-footer--nykaa .ps-footer__social-wrap .ps-list--social {
+  display: flex;
+  gap: 10px;
+}
+.ps-footer--nykaa .ps-footer__social-wrap .ps-list--social li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 16px;
+  transition: background 0.2s ease;
+}
+.ps-footer--nykaa .ps-footer__social-wrap .ps-list--social li a:hover {
+  background: #fff;
+  color: #fc2779;
+}
+
+/* Middle Links Grid */
+.ps-footer--nykaa .ps-footer__middle {
+  padding: 50px 0 30px;
+}
+.ps-footer--nykaa .ps-footer__middle-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+}
+.ps-footer--nykaa .ps-footer__col .widget_contact-us h3.contact-hotline {
+  color: #fc2779;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 4px 0 10px;
+}
+.ps-footer--nykaa .ps-footer__col .widget_contact-us .contact-hotline-label {
+  color: #888;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0;
+}
+.ps-footer--nykaa .ps-footer__col .widget_contact-us .contact-address,
+.ps-footer--nykaa .ps-footer__col .widget_contact-us .contact-email {
+  margin-bottom: 4px;
+}
+.ps-footer--nykaa .ps-footer__col .widget_contact-us .contact-email a {
+  color: #b0b0b0;
+}
+.ps-footer--nykaa .ps-footer__col .widget_contact-us .contact-email a:hover {
+  color: #fc2779;
+}
+.ps-footer--nykaa .ps-footer__col .widget_contact-us .ps-list--social {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+.ps-footer--nykaa .ps-footer__col .widget_contact-us .ps-list--social li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #333;
+  color: #888;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+.ps-footer--nykaa .ps-footer__col .widget_contact-us .ps-list--social li a:hover {
+  border-color: #fc2779;
+  color: #fc2779;
+}
+
+/* Widget columns (custom-menu) */
+.ps-footer--nykaa .widget_footer {
+  margin-bottom: 0;
+}
+.ps-footer--nykaa .widget_footer .ps-list--link {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ps-footer--nykaa .widget_footer .ps-list--link li {
+  margin-bottom: 6px;
+}
+.ps-footer--nykaa .widget_footer .ps-list--link li a {
+  color: #b0b0b0;
+  font-size: 13px;
+  display: inline-block;
+  position: relative;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+.ps-footer--nykaa .widget_footer .ps-list--link li a:hover {
+  color: #fc2779;
+  padding-left: 4px;
+}
+
+/* Bottom Links (product categories) */
+.ps-footer--nykaa .ps-footer__links {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 18px 0;
+}
+.ps-footer--nykaa .ps-footer__links p {
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: #666;
+}
+.ps-footer--nykaa .ps-footer__links p strong {
+  color: #999;
+  font-weight: 600;
+  margin-right: 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.ps-footer--nykaa .ps-footer__links p a {
+  color: #777;
+  font-size: 12px;
+  display: inline-block;
+  margin-right: 6px;
+}
+.ps-footer--nykaa .ps-footer__links p a:after {
+  content: "|";
+  margin-left: 6px;
+  color: #444;
+}
+.ps-footer--nykaa .ps-footer__links p a:last-child:after {
+  display: none;
+}
+.ps-footer--nykaa .ps-footer__links p a:hover {
+  color: #fc2779;
+}
+
+/* Bottom Bar (copyright + payments) */
+.ps-footer--nykaa .ps-footer__bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 20px 0;
+}
+.ps-footer--nykaa .ps-footer__bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.ps-footer--nykaa .ps-footer__bottom .site-copyright {
+  color: #666;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+.ps-footer--nykaa .footer-payments {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.ps-footer--nykaa .footer-payments .payment-method-title {
+  color: #666;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  display: block;
+  width: 100%;
+  margin-bottom: 4px;
+}
+.ps-footer--nykaa .footer-payments span {
+  display: inline-block;
+}
+.ps-footer--nykaa .footer-payments img {
+  max-height: 24px;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+.ps-footer--nykaa .footer-payments img:hover {
+  opacity: 1;
+}
+
+/* Override theme default footer styles */
+.ps-footer--nykaa .ps-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .ps-footer--nykaa .ps-footer__newsletter-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .ps-footer--nykaa .ps-form__input-group {
+    max-width: 100%;
+  }
+  .ps-footer--nykaa .ps-footer__middle-inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+@media (max-width: 480px) {
+  .ps-footer--nykaa .ps-footer__middle-inner {
+    grid-template-columns: 1fr;
+  }
+  .ps-footer--nykaa .ps-footer__bottom-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .ps-footer--nykaa .footer-payments {
+    justify-content: center;
+  }
+}

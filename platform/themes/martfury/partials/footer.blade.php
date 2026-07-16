@@ -1,121 +1,154 @@
- <footer class="ps-footer">
+<footer class="ps-footer ps-footer--nykaa">
+    @if (is_plugin_active('newsletter'))
+    <div class="ps-footer__newsletter-bar">
         <div class="ps-container">
-            <div class="ps-footer__widgets">
+            <div class="ps-footer__newsletter-inner">
+                <div class="ps-footer__newsletter-form">
+                    <h4 class="ps-footer__newsletter-title">{{ __('Stay In The Loop') }}</h4>
+                    <p class="ps-footer__newsletter-desc">{{ __('Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.') }}</p>
+                    <form method="post" action="{{ route('public.newsletter.subscribe') }}" class="ps-form--subscribe-footer newsletter-form">
+                        @csrf
+                        <div class="ps-form__input-group">
+                            <input class="form-control" name="email" type="email" placeholder="{{ __('Enter your email') }}" required>
+                            <button class="ps-btn ps-btn--subscribe" type="submit">{{ __('Subscribe') }}</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="ps-footer__social-wrap">
+                    <h4>{{ __('Follow Us') }}</h4>
+                    {!! Theme::partial('social-links') !!}
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+
+    <div class="ps-footer__middle">
+        <div class="ps-container">
+            <div class="ps-footer__middle-inner">
                 @if (theme_option('hotline') || theme_option('address') || theme_option('email') || theme_option('social-name-1'))
+                <div class="ps-footer__col">
                     <aside class="widget widget_footer widget_contact-us">
                         <h4 class="widget-title">{{ __('Contact us') }}</h4>
                         <div class="widget_content">
                             @if (theme_option('hotline'))
-                                <p>{{ __('Call us 24/7') }}</p>
-                                <h3>{{ theme_option('hotline') }}</h3>
+                                <p class="contact-hotline-label">{{ __('Call us 24/7') }}</p>
+                                <h3 class="contact-hotline">{{ theme_option('hotline') }}</h3>
                             @endif
-                            <p>{{ theme_option('address') }} <br><a href="mailto:{{ theme_option('email') }}">{{ theme_option('email') }}</a></p>
+                            <p class="contact-address">{{ theme_option('address') }}</p>
+                            <p class="contact-email"><a href="mailto:{{ theme_option('email') }}">{{ theme_option('email') }}</a></p>
                             {!! Theme::partial('social-links') !!}
                         </div>
                     </aside>
+                </div>
                 @endif
                 {!! dynamic_sidebar('footer_sidebar') !!}
             </div>
-            @if (Widget::group('bottom_footer_sidebar')->getWidgets())
-                <div class="ps-footer__links" id="footer-links">
-                    {!! dynamic_sidebar('bottom_footer_sidebar') !!}
-                </div>
-            @endif
-            <div class="ps-footer__copyright">
+        </div>
+    </div>
+
+    @if (Widget::group('bottom_footer_sidebar')->getWidgets())
+    <div class="ps-footer__links" id="footer-links">
+        <div class="ps-container">
+            {!! dynamic_sidebar('bottom_footer_sidebar') !!}
+        </div>
+    </div>
+    @endif
+
+    <div class="ps-footer__bottom">
+        <div class="ps-container">
+            <div class="ps-footer__bottom-inner">
                 <p class="site-copyright">{!! Theme::getSiteCopyright() !!}</p>
                 @php $paymentMethods = array_filter(json_decode(theme_option('payment_methods', []), true)); @endphp
                 @if ($paymentMethods)
                     <div class="footer-payments">
                         <span class="payment-method-title">{{ __('We Using Safe Payment For') }}:</span>
-                        <p class="d-sm-inline-block d-block">
-                            @if (theme_option('payment_methods_link'))
-                                <a href="{{ url(theme_option('payment_methods_link')) }}" target="_blank">
+                        @if (theme_option('payment_methods_link'))
+                            <a href="{{ url(theme_option('payment_methods_link')) }}" target="_blank">
+                        @endif
+                        @foreach($paymentMethods as $method)
+                            @if (!empty($method))
+                                <span>{!! RvMedia::image($method, __('Payment methods')) !!}</span>
                             @endif
-                            @foreach($paymentMethods as $method)
-                                @if (!empty($method))
-                                    <span>
-                                        {!! RvMedia::image($method, __('Payment methods')) !!}
-                                    </span>
-                                @endif
-                            @endforeach
-                            @if (theme_option('payment_methods_link'))
-                                </a>
-                            @endif
-                        </p>
+                        @endforeach
+                        @if (theme_option('payment_methods_link'))
+                            </a>
+                        @endif
                     </div>
                 @endif
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    @if (is_plugin_active('newsletter') && theme_option('enable_newsletter_popup', 'yes') === 'yes')
-        <div data-session-domain="{{ config('session.domain') ?? request()->getHost() }}"></div>
-        <div class="ps-popup" id="subscribe" data-time="{{ (int)theme_option('newsletter_show_after_seconds', 10) * 1000 }}">
-            <div class="ps-popup__content bg--cover" data-background="{{ RvMedia::getImageUrl(theme_option('newsletter_image')) }}" style="background-size: cover!important;"><a class="ps-popup__close" title="{{ __('Close') }}" href="#"><i class="icon-cross"></i></a>
-                <form method="post" action="{{ route('public.newsletter.subscribe') }}" class="ps-form--subscribe-popup newsletter-form">
-                    @csrf
-                    <div class="ps-form__content">
-                        <h4>{{ theme_option('newsletter_popup_title') ?: __('Get 25% Discount') }}</h4>
-                        <p>{{ theme_option('newsletter_popup_description') ?: __('Subscribe to the mailing list to receive updates on new arrivals, special offers and our promotions.') }}</p>
-                        <div class="mb-3">
-                            <input class="form-control" name="email" type="email" placeholder="{{ __('Email Address') }}" required>
-                        </div>
-
-                        {!! apply_filters('form_extra_fields_render', null, \Botble\Newsletter\Forms\Fronts\NewsletterForm::class) !!}
-
-                        <div class="mb-3">
-                            <button class="ps-btn" type="submit" >{{ __('Subscribe') }}</button>
-                        </div>
-                        <div class="ps-checkbox">
-                            <input class="form-control" type="checkbox" id="dont_show_again" name="dont_show_again">
-                            <label for="dont_show_again">{{ __("Don't show this popup again") }}</label>
-                        </div>
+@if (is_plugin_active('newsletter') && theme_option('enable_newsletter_popup', 'yes') === 'yes')
+    <div data-session-domain="{{ config('session.domain') ?? request()->getHost() }}"></div>
+    <div class="ps-popup" id="subscribe" data-time="{{ (int)theme_option('newsletter_show_after_seconds', 10) * 1000 }}">
+        <div class="ps-popup__content bg--cover" data-background="{{ RvMedia::getImageUrl(theme_option('newsletter_image')) }}" style="background-size: cover!important;"><a class="ps-popup__close" title="{{ __('Close') }}" href="#"><i class="icon-cross"></i></a>
+            <form method="post" action="{{ route('public.newsletter.subscribe') }}" class="ps-form--subscribe-popup newsletter-form">
+                @csrf
+                <div class="ps-form__content">
+                    <h4>{{ theme_option('newsletter_popup_title') ?: __('Get 25% Discount') }}</h4>
+                    <p>{{ theme_option('newsletter_popup_description') ?: __('Subscribe to the mailing list to receive updates on new arrivals, special offers and our promotions.') }}</p>
+                    <div class="mb-3">
+                        <input class="form-control" name="email" type="email" placeholder="{{ __('Email Address') }}" required>
                     </div>
-                </form>
-            </div>
-        </div>
-    @endif
 
-    {!! Theme::get('bottomFooter') !!}
+                    {!! apply_filters('form_extra_fields_render', null, \Botble\Newsletter\Forms\Fronts\NewsletterForm::class) !!}
 
-    <div id="back2top"><i class="icon icon-arrow-up" title="Scroll Up"></i></div>
-    <div class="ps-site-overlay"></div>
-    @if (is_plugin_active('ecommerce'))
-        <div class="ps-search" id="site-search"><a class="ps-btn--close" href="#"></a>
-            <div class="ps-search__content">
-                <form class="ps-form--primary-search" action="{{ route('public.products') }}" data-ajax-url="{{ route('public.ajax.search-products') }}" method="get">
-                    <input class="form-control input-search-product" name="q" value="{{ BaseHelper::stringify(request()->query('q')) }}" type="text" autocomplete="off" placeholder="{{ __('Search for...') }}">
-                    <div class="spinner-icon">
-                        <i class="fa fa-spin fa-spinner"></i>
+                    <div class="mb-3">
+                        <button class="ps-btn" type="submit" >{{ __('Subscribe') }}</button>
                     </div>
-                    <button title="{{ __('Search') }}"><i class="aroma-magnifying-glass"></i></button>
-                    <div class="ps-panel--search-result"></div>
-                </form>
-            </div>
-        </div>
-    @endif
-    <div class="modal fade" id="product-quickview" tabindex="-1" role="dialog" aria-labelledby="product-quickview" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content"><span class="modal-close" data-bs-dismiss="modal"><i class="icon-cross2"></i></span>
-                <article class="ps-product--detail ps-product--fullwidth ps-product--quickview">
-                </article>
-            </div>
+                    <div class="ps-checkbox">
+                        <input class="form-control" type="checkbox" id="dont_show_again" name="dont_show_again">
+                        <label for="dont_show_again">{{ __("Don't show this popup again") }}</label>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
+@endif
 
-    @include(Theme::getThemeNamespace('views.ecommerce.includes.quick-shop-modal'))
+{!! Theme::get('bottomFooter') !!}
 
-    <script>
-        window.trans = {
-            "View All": "{{ __('View All') }}",
-            "No reviews!": "{{ __('No reviews!') }}",
-        };
-        window.siteConfig = window.siteConfig || {};
-        window.siteConfig.ajaxCartUrl = "{{ route('public.ajax.cart') }}";
-    </script>
+<div id="back2top"><i class="icon icon-arrow-up" title="Scroll Up"></i></div>
+<div class="ps-site-overlay"></div>
+@if (is_plugin_active('ecommerce'))
+    <div class="ps-search" id="site-search"><a class="ps-btn--close" href="#"></a>
+        <div class="ps-search__content">
+            <form class="ps-form--primary-search" action="{{ route('public.products') }}" data-ajax-url="{{ route('public.ajax.search-products') }}" method="get">
+                <input class="form-control input-search-product" name="q" value="{{ BaseHelper::stringify(request()->query('q')) }}" type="text" autocomplete="off" placeholder="{{ __('Search for...') }}">
+                <div class="spinner-icon">
+                    <i class="fa fa-spin fa-spinner"></i>
+                </div>
+                <button title="{{ __('Search') }}"><i class="aroma-magnifying-glass"></i></button>
+                <div class="ps-panel--search-result"></div>
+            </form>
+        </div>
+    </div>
+@endif
+<div class="modal fade" id="product-quickview" tabindex="-1" role="dialog" aria-labelledby="product-quickview" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content"><span class="modal-close" data-bs-dismiss="modal"><i class="icon-cross2"></i></span>
+            <article class="ps-product--detail ps-product--fullwidth ps-product--quickview">
+            </article>
+        </div>
+    </div>
+</div>
 
-    {!! Theme::footer() !!}
+@include(Theme::getThemeNamespace('views.ecommerce.includes.quick-shop-modal'))
 
-    @stack('footer')
-    </body>
+<script>
+    window.trans = {
+        "View All": "{{ __('View All') }}",
+        "No reviews!": "{{ __('No reviews!') }}",
+    };
+    window.siteConfig = window.siteConfig || {};
+    window.siteConfig.ajaxCartUrl = "{{ route('public.ajax.cart') }}";
+</script>
+
+{!! Theme::footer() !!}
+
+@stack('footer')
+</body>
 </html>
