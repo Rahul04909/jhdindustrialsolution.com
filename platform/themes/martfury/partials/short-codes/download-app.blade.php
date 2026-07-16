@@ -3,8 +3,8 @@
         <div class="banner-carousel">
             @php
                 $banners = [
-                    'https://images-static.nykaa.com/uploads/37f3c450-06bd-48dd-91a8-68fbd70b631a.jpg?tr=w-1920',
-                    'https://images-static.nykaa.com/uploads/dadddf26-4051-481e-86da-a75596e538e7.jpg?tr=w-1920',
+                    'https://images-static.nykaa.com/uploads/9ff20482-b3a3-47a0-a77e-20a21ebed482.gif',
+                    'https://images-static.nykaa.com/uploads/9ff20482-b3a3-47a0-a77e-20a21ebed482.gif',
                 ];
             @endphp
             @foreach ($banners as $banner)
