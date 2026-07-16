@@ -19,6 +19,16 @@ Theme::registerRoutes(function (): void {
 AdminHelper::registerRoutes(function (): void {
     Route::group(['prefix' => 'ecommerce'], function (): void {
         Route::group(['prefix' => 'quote-requests', 'as' => 'quote-requests.'], function (): void {
+            Route::get('debug-table', function () {
+                try {
+                    $table = new Botble\Ecommerce\Tables\QuoteTable;
+                    $ajax = $table->ajax();
+                    return $ajax;
+                } catch (Exception $e) {
+                    return response()->json(['error' => $e->getMessage(), 'file' => $e->getFile(), 'line' => $e->getLine(), 'trace' => $e->getTraceAsString()], 500);
+                }
+            })->name('debug-table');
+
             Route::get('/', [QuoteController::class, 'index'])
                 ->name('index')
                 ->permission('quote-requests.index');
