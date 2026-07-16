@@ -2,8 +2,8 @@
 
 namespace Botble\Ecommerce\Enums;
 
+use Botble\Base\Facades\Html;
 use Botble\Base\Supports\Enum;
-use Illuminate\Support\Facades\Html;
 
 /**
  * @method static QuoteStatusEnum PENDING()
