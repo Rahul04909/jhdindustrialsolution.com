@@ -27,7 +27,6 @@ trait Aggregate
         'min' => 'MIN',
         'max' => 'MAX',
         'sum' => 'SUM',
-        'count' => 'COUNT',
     ];
 
     /**

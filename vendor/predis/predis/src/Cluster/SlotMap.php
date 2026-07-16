@@ -264,7 +264,6 @@ class SlotMap implements ArrayAccess, IteratorAggregate, Countable
         foreach ($this->slotRanges as $slotRange) {
             if (!$slotRange->hasSlot($slot)) {
                 $results[] = $slotRange;
-                continue;
             }
 
             if (static::isValidRange($slotRange->getStart(), $slot - 1)) {

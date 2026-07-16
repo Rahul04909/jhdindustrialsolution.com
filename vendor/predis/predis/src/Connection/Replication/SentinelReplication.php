@@ -16,7 +16,6 @@ use InvalidArgumentException;
 use Predis\Command\Command;
 use Predis\Command\CommandInterface;
 use Predis\Command\RawCommand;
-use Predis\Command\Redis\Utils\CommandUtility;
 use Predis\CommunicationException;
 use Predis\Connection\AbstractAggregateConnection;
 use Predis\Connection\ConnectionException;
@@ -33,6 +32,7 @@ use Predis\Response\ErrorInterface as ErrorResponseInterface;
 use Predis\Response\ServerException;
 use Predis\Retry\Retry;
 use Predis\Retry\Strategy\ExponentialBackoff;
+use Throwable;
 
 /**
  * @author Daniele Alessandri <suppakilla@gmail.com>
@@ -431,24 +431,20 @@ class SentinelReplication extends AbstractAggregateConnection implements Replica
         }
 
         foreach ($payload as $slave) {
-            if ($slave !== [] && !is_string(key($slave))) {
-                $slave = CommandUtility::arrayToDictionary($slave, null, false);
-            }
-
-            $flags = explode(',', $slave['flags']);
+            $flags = explode(',', $slave[9]);
 
             if (array_intersect($flags, ['s_down', 'o_down', 'disconnected'])) {
                 continue;
             }
 
             // ensure `master-link-status` is ok
-            if (isset($slave['master-link-status']) && $slave['master-link-status'] === 'err') {
+            if (isset($slave[31]) && $slave[31] === 'err') {
                 continue;
             }
 
             $slaves[] = [
-                'host' => $slave['ip'],
-                'port' => $slave['port'],
+                'host' => $slave[3],
+                'port' => $slave[5],
                 'role' => 'slave',
             ];
         }
@@ -741,7 +737,7 @@ class SentinelReplication extends AbstractAggregateConnection implements Replica
         } else {
             $retry = $parameters->retry;
         }
-        $retry->updateCatchableExceptions([CommunicationException::class]);
+        $retry->updateCatchableExceptions([Throwable::class]);
 
         $doCallback = function () use ($method, $command) {
             $response = $this->getConnectionByCommand($command)->{$method}($command);
@@ -753,9 +749,12 @@ class SentinelReplication extends AbstractAggregateConnection implements Replica
             return $response;
         };
 
-        $failCallback = function (CommunicationException $exception) {
+        $failCallback = function (Throwable $exception) {
             $this->wipeServerList();
-            $exception->getConnection()->disconnect();
+
+            if ($exception instanceof CommunicationException) {
+                $exception->getConnection()->disconnect();
+            }
         };
 
         return $retry->callWithRetry($doCallback, $failCallback);
