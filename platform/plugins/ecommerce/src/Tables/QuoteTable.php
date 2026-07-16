@@ -15,13 +15,13 @@ use Botble\Table\BulkChanges\NameBulkChange;
 use Botble\Table\BulkChanges\StatusBulkChange;
 use Botble\Table\Columns\CreatedAtColumn;
 use Botble\Table\Columns\EmailColumn;
+use Botble\Table\Columns\FormattedColumn;
 use Botble\Table\Columns\IdColumn;
 use Botble\Table\Columns\NameColumn;
 use Botble\Table\Columns\StatusColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\Rule;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -54,24 +54,6 @@ class QuoteTable extends TableAbstract
             });
     }
 
-    public function ajax(): JsonResponse
-    {
-        $data = $this->table
-            ->eloquent($this->query())
-            ->editColumn('name', function (QuoteRequest $item) {
-                return BaseHelper::clean($item->name);
-            })
-            ->editColumn('product_id', function (QuoteRequest $item) {
-                if ($item->product) {
-                    return BaseHelper::clean($item->product->name);
-                }
-
-                return 'N/A';
-            });
-
-        return $this->toJson($data);
-    }
-
     public function columns(): array
     {
         return [
@@ -84,9 +66,17 @@ class QuoteTable extends TableAbstract
             NameColumn::make('company_name')
                 ->title(trans('plugins/ecommerce::quote-requests.company'))
                 ->alignStart(),
-            NameColumn::make('product_id')
+            FormattedColumn::make('product_id')
                 ->title(trans('plugins/ecommerce::quote-requests.product'))
-                ->alignStart(),
+                ->alignStart()
+                ->renderUsing(function (FormattedColumn $column) {
+                    $item = $column->getItem();
+                    if ($item->product) {
+                        return BaseHelper::clean($item->product->name);
+                    }
+
+                    return 'N/A';
+                }),
             NameColumn::make('quantity')
                 ->title(trans('plugins/ecommerce::quote-requests.quantity'))
                 ->alignStart(),
