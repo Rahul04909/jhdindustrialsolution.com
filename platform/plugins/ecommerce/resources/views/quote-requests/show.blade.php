@@ -84,7 +84,7 @@
                     >
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label class="form-label">{{ trans('plugins/ecommerce::quote-requests.status') }}</label>
+                                <label class="form-label">{{ trans('plugins/ecommerce::quote-requests.status_text') }}</label>
                                 <select name="status" class="form-select">
                                     @foreach ($statuses as $value => $label)
                                         <option value="{{ $value }}" @selected($quoteRequest->status->getValue() === $value)>
@@ -179,7 +179,7 @@
                 </x-core::card.header>
                 <x-core::card.body>
                     <div class="mb-2">
-                        <strong>{{ trans('plugins/ecommerce::quote-requests.status') }}:</strong><br>
+                        <strong>{{ trans('plugins/ecommerce::quote-requests.status_text') }}:</strong><br>
                         {!! BaseHelper::clean($quoteRequest->status->toHtml()) !!}
                     </div>
                     @if ($quoteRequest->quoted_price)

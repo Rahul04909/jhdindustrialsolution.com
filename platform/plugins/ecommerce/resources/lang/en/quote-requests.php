@@ -9,7 +9,6 @@ return [
     'product' => 'Product',
     'quantity' => 'Quantity',
     'message' => 'Message',
-    'status' => 'Status',
     'requested_at' => 'Requested At',
     'admin_note' => 'Admin Note',
     'admin_note_placeholder' => 'Add internal notes about this quote request...',
