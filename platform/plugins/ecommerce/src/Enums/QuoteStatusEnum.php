@@ -20,6 +20,8 @@ class QuoteStatusEnum extends Enum
     public const DECLINED = 'declined';
     public const CANCELLED = 'cancelled';
 
+    protected static $langPath = 'plugins/ecommerce::quote-requests.status';
+
     public static $labels = [];
 
     protected static function boot(): void
@@ -43,7 +45,7 @@ class QuoteStatusEnum extends Enum
             self::ACCEPTED => Html::tag('span', self::ACCEPTED()->label(), ['class' => 'badge bg-success'])->toHtml(),
             self::DECLINED => Html::tag('span', self::DECLINED()->label(), ['class' => 'badge bg-danger'])->toHtml(),
             self::CANCELLED => Html::tag('span', self::CANCELLED()->label(), ['class' => 'badge bg-secondary'])->toHtml(),
-            default => parent::toHtml(),
+            default => (string) parent::toHtml(),
         };
     }
 }
