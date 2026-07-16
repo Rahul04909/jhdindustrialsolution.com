@@ -1,49 +1,44 @@
-<div class="ps-download-app">
-    <div class="ps-container">
-        <div class="ps-block--download-app">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
-                        <div class="ps-block__thumbnail">
-                            {!! RvMedia::image($screenshot, __('Screenshot')) !!}
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
-                        <div class="ps-block__content">
-                            <h3>{!! BaseHelper::clean($title) !!}</h3>
-                            @if ($description)
-                                <p>{!! BaseHelper::clean($description) !!}</p>
-                            @endif
-                            @if ($subtitle)
-                                <p>{!! BaseHelper::clean($subtitle) !!}</p>
-                            @endif
-                            <form class="ps-form--download-app" action="{{ route('public.ajax.send-download-app-links') }}" method="post">
-                                @csrf
-                                <div class="form-group--nest">
-                                    <input class="form-control" type="email" name="email" placeholder="{{ __('Email Address') }}">
-
-                                    <button class="ps-btn" type="submit">{{ __('Subscribe') }}</button>
-                                </div>
-
-                                @if ($extraFields = apply_filters('form_extra_fields_render', null, \Botble\Newsletter\Forms\Fronts\NewsletterForm::class))
-                                    <div style="margin-top: 15px;">{!! $extraFields !!}</div>
-                                @endif
-                            </form>
-                            @if ($androidAppUrl || $iosAppUrl)
-                                <p class="download-link">
-                                    @if ($androidAppUrl)
-                                        <a href="{{ (string) $androidAppUrl }}"><img src="{{ Theme::asset()->url('img/google-play.png') }}" alt="{{ __('Google Play') }}"></a>
-                                    @endif
-
-                                    @if ($iosAppUrl)
-                                        <a href="{{ (string) $iosAppUrl }}"><img src="{{ Theme::asset()->url('img/app-store.png') }}" alt="{{ __('App Store') }}"></a>
-                                    @endif
-                                </p>
-                            @endif
-                        </div>
-                    </div>
+<div class="ps-banner-slider">
+    <div class="banner-slider-inner">
+        <div class="banner-carousel">
+            @php
+                $banners = [
+                    'https://images-static.nykaa.com/uploads/37f3c450-06bd-48dd-91a8-68fbd70b631a.jpg?tr=w-1920',
+                    'https://images-static.nykaa.com/uploads/dadddf26-4051-481e-86da-a75596e538e7.jpg?tr=w-1920',
+                ];
+            @endphp
+            @foreach ($banners as $banner)
+                <div class="banner-slide">
+                    <a href="{{ $bannerLink ?? '#' }}" class="banner-link">
+                        <img src="{{ $banner }}" alt="{{ __('Banner') }}" loading="lazy">
+                    </a>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
+
+@once
+    @push('footer')
+        <script>
+            $(document).ready(function () {
+                if ($.fn.slick) {
+                    $('.banner-carousel').slick({
+                        dots: true,
+                        arrows: true,
+                        infinite: true,
+                        autoplay: true,
+                        autoplaySpeed: 4000,
+                        speed: 600,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        fade: true,
+                        cssEase: 'linear',
+                        prevArrow: '<button type="button" class="slick-prev"><i class="icon-chevron-left"></i></button>',
+                        nextArrow: '<button type="button" class="slick-next"><i class="icon-chevron-right"></i></button>',
+                    });
+                }
+            });
+        </script>
+    @endpush
+@endonce
