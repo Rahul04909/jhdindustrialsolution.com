@@ -43,6 +43,7 @@ use Botble\Ecommerce\Models\FlashSale;
 use Botble\Ecommerce\Models\Invoice;
 use Botble\Ecommerce\Models\Order;
 use Botble\Ecommerce\Models\OrderReturn;
+use Botble\Ecommerce\Models\QuoteRequest;
 use Botble\Ecommerce\Models\Product;
 use Botble\Ecommerce\Models\ProductCategory;
 use Botble\Ecommerce\Models\Review;
@@ -183,6 +184,14 @@ class HookServiceProvider extends ServiceProvider
 
             return $messages;
         }, 999, 2);
+
+        add_filter(ECOMMERCE_PRODUCT_DETAIL_EXTRA_HTML, function (?string $html, $product) {
+            if (! $product) {
+                return $html;
+            }
+
+            return $html . view('plugins/ecommerce::quote-requests.partials.request-quote-button', compact('product'))->render();
+        }, 120, 2);
 
         add_filter('core_request_attributes', function (array $attributes, BaseRequest $request) {
             if ($request instanceof WebsiteTrackingSettingRequest) {
@@ -1712,6 +1721,19 @@ class HookServiceProvider extends ServiceProvider
 
                 return view('core/base::partials.navbar.badge-count', ['class' => 'pending-order-returns'])->render();
 
+            case 'cms-plugins-ecommerce-quote-requests':
+                if (! Auth::user()->hasPermission('quote-requests.index')) {
+                    return $number;
+                }
+
+                $pendingCount = QuoteRequest::query()->where('status', 'pending')->count();
+
+                if ($pendingCount > 0) {
+                    return BaseHelper::renderBadge(number_format($pendingCount));
+                }
+
+                break;
+
             case 'cms-ecommerce-review':
                 if (! Auth::user()->hasPermission('reviews.index')) {
                     return $number;
@@ -1756,6 +1778,15 @@ class HookServiceProvider extends ServiceProvider
             $data[] = [
                 'key' => 'ecommerce-count',
                 'value' => $pendingOrders + $pendingOrderReturns,
+            ];
+        }
+
+        if (Auth::check() && Auth::user()->hasPermission('quote-requests.index')) {
+            $pendingQuotes = QuoteRequest::query()->where('status', 'pending')->count();
+
+            $data[] = [
+                'key' => 'pending-quote-requests',
+                'value' => $pendingQuotes,
             ];
         }
 

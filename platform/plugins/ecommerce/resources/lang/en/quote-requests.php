@@ -1,0 +1,41 @@
+<?php
+
+return [
+    'name' => 'Quote Requests',
+    'customer_name' => 'Customer Name',
+    'email' => 'Email',
+    'phone' => 'Phone',
+    'company' => 'Company',
+    'product' => 'Product',
+    'quantity' => 'Quantity',
+    'message' => 'Message',
+    'status' => 'Status',
+    'requested_at' => 'Requested At',
+    'admin_note' => 'Admin Note',
+    'admin_note_placeholder' => 'Add internal notes about this quote request...',
+    'quoted_price' => 'Quoted Price',
+    'quoted_at' => 'Quoted At',
+    'view' => 'View Quote Request - :name',
+    'quote_request_info' => 'Quote Request Information',
+    'admin_actions' => 'Admin Actions',
+    'quote_summary' => 'Quote Summary',
+    'status_text' => 'Status',
+    'quote_request_id' => 'Quote Request ID',
+    'danger_zone' => 'Danger Zone',
+    'delete_this_request' => 'Delete this request',
+    'delete_modal' => [
+        'title' => 'Delete Quote Request',
+        'description' => 'Are you sure you want to delete this quote request? This action cannot be undone.',
+    ],
+    'intro' => [
+        'title' => 'Manage Quote Requests',
+        'description' => 'Customers request quotes for products and you can provide them with pricing here.',
+    ],
+    'status' => [
+        'pending' => 'Pending',
+        'quoted' => 'Quoted',
+        'accepted' => 'Accepted',
+        'declined' => 'Declined',
+        'cancelled' => 'Cancelled',
+    ],
+];

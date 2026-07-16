@@ -108,4 +108,8 @@ return [
     'abandoned_cart_reminder_3_title' => 'Abandoned Cart Reminder #3 (Last Chance)',
     'abandoned_cart_reminder_3_description' => 'Final reminder email with urgency and best discount offer',
     'abandoned_cart_reminder_3_subject' => 'Last chance! Your cart expires soon',
+
+    'quote_request_notification_title' => 'Quote Request Notification',
+    'quote_request_notification_description' => 'Send notification to admin when a customer submits a quote request',
+    'quote_request_notification_subject' => 'New Quote Request #{{ quote_request_id }} from {{ customer_name }}',
 ];

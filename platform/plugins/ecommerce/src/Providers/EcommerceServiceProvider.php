@@ -417,6 +417,7 @@ class EcommerceServiceProvider extends ServiceProvider
                 'invoice',
                 'setting',
                 'product-specification',
+                'quote',
                 'api',
                 'ajax',
             ])
@@ -975,6 +976,15 @@ class EcommerceServiceProvider extends ServiceProvider
                     'icon' => 'ti ti-users',
                     'url' => fn () => route('customers.index'),
                     'permissions' => ['customers.index'],
+                ])
+                ->registerItem([
+                    'id' => 'cms-plugins-ecommerce-quote-requests',
+                    'priority' => 195,
+                    'parent_id' => 'cms-plugins-ecommerce',
+                    'name' => 'plugins/ecommerce::quote-requests.name',
+                    'icon' => 'ti ti-file-description',
+                    'url' => fn () => route('quote-requests.index'),
+                    'permissions' => ['quote-requests.index'],
                 ])
                 ->registerItem([
                     'id' => 'cms-plugins-ecommerce-customer-carts',

@@ -6,6 +6,30 @@ return [
         'flag' => 'plugins.ecommerce',
     ],
 
+    /**
+     * Quote Requests
+     */
+    [
+        'name' => 'Quote Requests',
+        'flag' => 'quote-requests.index',
+        'parent_flag' => 'plugins.ecommerce',
+    ],
+    [
+        'name' => 'View',
+        'flag' => 'quote-requests.show',
+        'parent_flag' => 'quote-requests.index',
+    ],
+    [
+        'name' => 'Update',
+        'flag' => 'quote-requests.edit',
+        'parent_flag' => 'quote-requests.index',
+    ],
+    [
+        'name' => 'Delete',
+        'flag' => 'quote-requests.destroy',
+        'parent_flag' => 'quote-requests.index',
+    ],
+
     [
         'name' => 'Reports',
         'flag' => 'ecommerce.report.index',
