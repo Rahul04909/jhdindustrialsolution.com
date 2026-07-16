@@ -41,6 +41,8 @@ class QuoteTable extends TableAbstract
                     ->permission('quote-requests.index'),
                 DeleteAction::make()->route('quote-requests.destroy'),
             ]);
+
+        $this->setOption('id', 'quote-requests-table');
     }
 
     public function ajax(): JsonResponse
@@ -84,22 +86,26 @@ class QuoteTable extends TableAbstract
     public function columns(): array
     {
         return [
-            IdColumn::make(),
+            IdColumn::make()->width(50),
             Column::make('name')
                 ->title(trans('plugins/ecommerce::quote-requests.customer_name'))
-                ->alignStart(),
-            EmailColumn::make(),
+                ->alignStart()
+                ->width('18%'),
+            EmailColumn::make()->width('20%'),
             Column::make('company_name')
                 ->title(trans('plugins/ecommerce::quote-requests.company'))
-                ->alignStart(),
+                ->alignStart()
+                ->width('15%'),
             Column::make('product_id')
                 ->title(trans('plugins/ecommerce::quote-requests.product'))
-                ->alignStart(),
+                ->alignStart()
+                ->width('15%'),
             Column::make('quantity')
                 ->title(trans('plugins/ecommerce::quote-requests.quantity'))
-                ->alignStart(),
-            StatusColumn::make(),
-            CreatedAtColumn::make(),
+                ->alignStart()
+                ->width(70),
+            StatusColumn::make()->width(110),
+            CreatedAtColumn::make()->width(150),
         ];
     }
 

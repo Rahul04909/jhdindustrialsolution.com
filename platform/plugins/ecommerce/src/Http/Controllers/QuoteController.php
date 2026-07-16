@@ -25,6 +25,10 @@ class QuoteController extends BaseController
     {
         $this->pageTitle(trans('plugins/ecommerce::quote-requests.name'));
 
+        Assets::addStylesDirectly('/vendor/core/core/base/css/libraries/tom-select.css')
+            ->addScriptsDirectly('/vendor/core/core/base/js/libraries/tom-select.js')
+            ->addStylesDirectly('/vendor/core/plugins/ecommerce/css/quote.css');
+
         return $dataTable->renderTable();
     }
 
