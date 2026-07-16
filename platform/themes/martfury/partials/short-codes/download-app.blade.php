@@ -9,9 +9,7 @@
             @endphp
             @foreach ($banners as $banner)
                 <div class="banner-slide">
-                    <a href="{{ $bannerLink ?? '#' }}" class="banner-link">
-                        <img src="{{ $banner }}" alt="{{ __('Banner') }}" loading="lazy">
-                    </a>
+                    <img src="{{ $banner }}" alt="{{ __('Banner') }}" loading="lazy">
                 </div>
             @endforeach
         </div>
@@ -36,6 +34,15 @@
                         cssEase: 'linear',
                         prevArrow: '<button type="button" class="slick-prev"><i class="icon-chevron-left"></i></button>',
                         nextArrow: '<button type="button" class="slick-next"><i class="icon-chevron-right"></i></button>',
+                        responsive: [
+                            {
+                                breakpoint: 768,
+                                settings: {
+                                    arrows: false,
+                                    dots: true
+                                }
+                            }
+                        ]
                     });
                 }
             });
