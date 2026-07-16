@@ -7,8 +7,13 @@ use Botble\Theme\Facades\Theme;
 use Illuminate\Support\Facades\Route;
 
 Theme::registerRoutes(function (): void {
-    Route::post('request-quote', [FrontQuoteController::class, 'store'])
-        ->name('public.quote-requests.store');
+    Route::controller(FrontQuoteController::class)
+        ->name('public.quote-requests.')
+        ->group(function (): void {
+            Route::post('request-quote', 'store')->name('store');
+            Route::get('request-quote', 'index')->name('index');
+            Route::get('request-quote/success', 'success')->name('success');
+        });
 });
 
 AdminHelper::registerRoutes(function (): void {
