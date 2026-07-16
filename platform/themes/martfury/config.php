@@ -71,6 +71,8 @@ return [
             $theme->asset()->container('footer')->usePath()
                 ->add('slick-js', 'plugins/slick/slick.min.js', ['jquery']);
             $theme->asset()->container('footer')->usePath()
+                ->add('banner-carousel-js', 'js/banner-carousel.js', ['jquery', 'slick-js'], [], $version);
+            $theme->asset()->container('footer')->usePath()
                 ->add('jquery-bar-rating-js', 'plugins/jquery-bar-rating/jquery.barrating.min.js', ['jquery']);
             $theme->asset()->container('footer')->usePath()
                 ->add('slick-animation-js', 'plugins/slick-animation.min.js', ['jquery']);
